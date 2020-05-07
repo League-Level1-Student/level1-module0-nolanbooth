@@ -50,7 +50,7 @@ public class MyFirstSwingGUI {
 		try {
 			return new ImageIcon(ImageIO.read(new MyFirstSwingGUI().getClass().getResourceAsStream("java.png")));
 		} catch (IOException e) {
-			e.printStackTrace()
+			e.printStackTrace();
 			return null;
 		}
 	}
