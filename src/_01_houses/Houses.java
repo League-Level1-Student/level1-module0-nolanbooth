@@ -60,7 +60,7 @@ public class Houses {
 				bill.move(tallness);
 				bill.turn(-90);
 				
-		
+				
 	
 		
 	

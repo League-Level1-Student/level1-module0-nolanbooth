@@ -5,6 +5,7 @@ package _04_drum_kit;
  */
 
 import java.applet.AudioClip;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,17 +21,19 @@ import javax.swing.JPanel;
 
 public class DrumKit implements MouseListener {
 
+	
 	JLabel drumLabelWithImage;
 
 	public void run() throws MalformedURLException {
 
 		// 1. Make a JFrame variable and initialize it using "new JFrame()"
-
+JFrame bill = new JFrame();
 		// 2. Make the frame visible and
 		// set its default close operation to JFrame.EXIT_ON_CLOSE
-
+bill.setVisible(true);
+bill.setDefaultCloseOperation(bill.EXIT_ON_CLOSE);
 		// 3. Set the size of the frame
-
+bill.setPreferredSize(new Dimension(500,500));
 		// 4. Set the title of the frame
 
 		// 5. Make a JPanel variable and initialize it using "new JPanel().
