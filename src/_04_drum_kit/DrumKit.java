@@ -33,35 +33,36 @@ JFrame bill = new JFrame();
 bill.setVisible(true);
 bill.setDefaultCloseOperation(bill.EXIT_ON_CLOSE);
 		// 3. Set the size of the frame
-bill.setPreferredSize(new Dimension(500,500));
+bill.setPreferredSize(new Dimension(600,600));
 		// 4. Set the title of the frame
-
+bill.setTitle("Tester");
 		// 5. Make a JPanel variable and initialize it using "new JPanel().
-
+JPanel billy = new JPanel();
 		// 6. Add the panel to the frame. (The panel is invisible.)
-
+bill.add(billy);
+billy.setVisible(true);
 		// 7. Download an image of a drum from the Internet. Drop it into your
 		// Eclipse project under "default package".
-
+String drum = "https://sometimes-interesting.com/wp-content/uploads/2014/11/rusty-drums.jpg";
 		// 8. Put the name of your image file in a String variable.
 
 		// 9. Edit the next line to use your String variable
-		// drumLabelWithImage = createLabelImage(drumImageString);
+		 drumLabelWithImage = createLabelImage(drum);
 
 		// 10. Add the image to the panel
-
+billy.add(drumLabelWithImage);
 		// 11. Set the layout of the panel to "new GridLayout()"
-
+billy.setLayout(new GridLayout());
 		// 12. call the pack() method on the frame. Run your program. Do you see
 		// your drum image?
-
+bill.pack();
 		// 13. add this mouse listener to drumLabelWithImage
-
+drumLabelWithImage.addMouseListener(this);
 		// 18. Add more images to make a drumkit. Remember to add this mouse
-		// listener to each one.
-
+//listener to each one.
+		
 	}
-
+	
 	public void mouseClicked(MouseEvent e) {
 		// 14. Print "mouse clicked" to the console. Run your program and watch
 		// the console to see when this is printed.
