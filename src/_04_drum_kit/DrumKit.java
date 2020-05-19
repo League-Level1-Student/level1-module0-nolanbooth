@@ -43,7 +43,7 @@ bill.add(billy);
 billy.setVisible(true);
 		// 7. Download an image of a drum from the Internet. Drop it into your
 		// Eclipse project under "default package".
-String drum = "https://sometimes-interesting.com/wp-content/uploads/2014/11/rusty-drums.jpg";
+String drum = "RustyDrums.jpg";
 		// 8. Put the name of your image file in a String variable.
 
 		// 9. Edit the next line to use your String variable
