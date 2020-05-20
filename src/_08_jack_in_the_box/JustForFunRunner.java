@@ -6,7 +6,5 @@ public class JustForFunRunner {
 public static void main(String[]args) {
 	new JustForFun().run();
 
-
-
 	}
 }

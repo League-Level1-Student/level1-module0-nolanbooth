@@ -11,20 +11,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class JustForFun implements ActionListener {
-//������������������������
+	int count = 0;
+	//������������������������
 //
 	JButton button = new JButton();
-	String fileThing = "JustForTesting.jpg";
+	String fileThing = "MrRosen.jpeg" + 
+			"";
 	public void run() {
 		 
-		showPicture(fileThing);
-
+		
 		JFrame frame = new JFrame();
 		frame.add(button);
 		frame.setVisible(true);
 		button.setText("Surprise!!");
 		button.addActionListener(this);
-
+frame.setSize(600, 700);
 	}
 
 	private void showPicture(String fileName) {
@@ -33,6 +34,7 @@ public class JustForFun implements ActionListener {
 			JFrame frame = new JFrame();
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.add(imageLabel);
+			frame.setSize(700,700);
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,14 +61,17 @@ public class JustForFun implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		int count = 0;
+		
+		
 		if (e.getSource() == button) {
 			count++;
 		}
-	if(count == 5) {
+	
+		if(count % 5 == 0) {
 		showPicture(fileThing);
-	}
-
+	
+		}
+System.out.println(count);
 	
 	
 	}
