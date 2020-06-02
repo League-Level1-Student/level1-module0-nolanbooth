@@ -70,17 +70,47 @@ public class TheSilentMontage implements ActionListener {
 		}
 		if (buttonPressed == button2) {
 			JOptionPane.showMessageDialog(null, "You selected backwards");
-		}
-		if (buttonPressed == button3) {
-			JOptionPane.showMessageDialog(null, "You clicked button three");
-		}
-		if (buttonPressed == button4) {
-			JOptionPane.showMessageDialog(null, "You clicked button four");
-		}
-		if (buttonPressed == button5) {
-			JOptionPane.showMessageDialog(null, "You clicked button five");
-		}
+			boolean torch;
+			int randoma1 = new Random().nextInt(3);
+			if (randoma1 == 1) {
+				JOptionPane.showMessageDialog(null, "You encountered a Fat Bunny!");
+				animal = "Fat Bunny";
+				power = "Tiny Teeth";
+				encounter(animal, power);
+			}
+			String DYTT = JOptionPane.showInputDialog(null, "You see a torch on the wall. Do you take it? (yes/no)");
+			if (DYTT.equalsIgnoreCase("yes")) {
+				JOptionPane.showMessageDialog(null, "You take the torch, and are glad of its light");
+				torch = true;
+			} else {
+				JOptionPane.showMessageDialog(null, "You decide to leave it there");
+				torch = false;
+			}
+			if (torch == true) {
+				JOptionPane.showMessageDialog(null, "You walk down the tunnel, looking for a way out."
+						+ "the torch helps you see, and you are glad you took it");
+				JOptionPane.showMessageDialog(null, "There are now two paths. Which way do you go?");
+			} else {
+				JOptionPane.showMessageDialog(null, "You walk in darkness until you hit a wall. "
+						+ "Feeling your way, you realize there are two paths, one to the right and one to the left");
+				JOptionPane.showMessageDialog(null, "Which path do you take?");
+			}
+			panel.remove(button1);
+			panel.remove(button2);
+			panel.remove(button3);
+			panel.add(button4);
+			panel.add(button5);
+			int randomb1 = new Random().nextInt(1);
+			button5.setText("Right");
+			button4.setText("Left");
+			if (buttonPressed == button4) {
+				JOptionPane.showMessageDialog(null, "You chose to go left");
+			}
+			else if (buttonPressed == button5) {
+				JOptionPane.showMessageDialog(null, "You chose to go right");
+			}
 
+		}
 	}
 
 	public static void encounter(String c, String p) {
@@ -167,6 +197,7 @@ public class TheSilentMontage implements ActionListener {
 					JOptionPane.showMessageDialog(null, c + " is scared that if he refuses, you will make him faint"
 							+ ", so he becomes your friend");
 					JOptionPane.showMessageDialog(null, "You learn that " + c + " is really nice!!");
+					boolean cowFriend = true;
 				}
 
 			}
@@ -244,6 +275,8 @@ public class TheSilentMontage implements ActionListener {
 								}
 							}
 							if (answer5 == 3) {
+								JOptionPane.showMessageDialog(null, c + " is your friend!!");
+								boolean cowFriend = true;
 
 							}
 
@@ -255,7 +288,11 @@ public class TheSilentMontage implements ActionListener {
 
 			}
 		}
-
+//be friends!!
+		if (answer == 3) {
+			JOptionPane.showMessageDialog(null, "You became " + c + "'s friend!!");
+			boolean cowFriend = true;
+		}
 	}
 
 }
