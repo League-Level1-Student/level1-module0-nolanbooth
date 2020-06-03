@@ -11,9 +11,11 @@ import java.util.Random;
 import javax.swing.JButton;
 
 public class TheSilentMontage implements ActionListener {
-	String animal = "Tiny Cow";
-	String power = "Tiny Horns";
-
+	static String animal = "Tiny Cow";
+	static String power = "Tiny Horns";
+	static boolean cowFriend;
+	static boolean bunnyFriend;
+	static boolean torch;
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JButton button1 = new JButton();
@@ -70,7 +72,7 @@ public class TheSilentMontage implements ActionListener {
 		}
 		if (buttonPressed == button2) {
 			JOptionPane.showMessageDialog(null, "You selected backwards");
-			boolean torch;
+
 			int randoma1 = new Random().nextInt(3);
 			if (randoma1 == 1) {
 				JOptionPane.showMessageDialog(null, "You encountered a Fat Bunny!");
@@ -97,19 +99,51 @@ public class TheSilentMontage implements ActionListener {
 			}
 			panel.remove(button1);
 			panel.remove(button2);
-			panel.remove(button3);
 			panel.add(button4);
 			panel.add(button5);
-			int randomb1 = new Random().nextInt(1);
+			panel.add(button3);
+			int randomb1 = new Random().nextInt(2);
 			button5.setText("Right");
 			button4.setText("Left");
+			button3.setText("Random (I don't know!!)");
+			String iCheck1 = JOptionPane.showInputDialog(null, "Do you want to have an inventory check? yes/no");
+			if (iCheck1.equalsIgnoreCase("yes")) {
+				if (torch == true) {
+					JOptionPane.showMessageDialog(null, "You are carrying a...");
+					JOptionPane.showMessageDialog(null, "torch");
+					if (bunnyFriend == true) {
+						JOptionPane.showMessageDialog(null, "fat bunny");
+					}
+				} else {
+					if (bunnyFriend == true) {
+						JOptionPane.showMessageDialog(null, "fat bunny");
+					}
+				}
+			}
+			
 			if (buttonPressed == button4) {
-				JOptionPane.showMessageDialog(null, "You chose to go left");
+				JOptionPane.showMessageDialog(null, "You decided to go left");
+				leftBackwards();
 			}
-			else if (buttonPressed == button5) {
-				JOptionPane.showMessageDialog(null, "You chose to go right");
-			}
+			if (buttonPressed == button5) {
+				JOptionPane.showMessageDialog(null, "You decided to go right");
 
+			}
+			if (buttonPressed == button3) {
+				JOptionPane.showMessageDialog(null,
+						"You didn't know which " + "one to pick, so you spun around in a circle and went "
+								+ "whichever way you turned out to be facing in.");
+				if (randomb1 == 1) {
+					JOptionPane.showMessageDialog(null, "You faced left.");
+					leftBackwards();
+				} else {
+					JOptionPane.showMessageDialog(null, "You faced right.");
+
+				}
+			}
+		}
+		if(buttonPressed == button4) {
+			System.out.println("Hello Nolan!");
 		}
 	}
 
@@ -197,102 +231,134 @@ public class TheSilentMontage implements ActionListener {
 					JOptionPane.showMessageDialog(null, c + " is scared that if he refuses, you will make him faint"
 							+ ", so he becomes your friend");
 					JOptionPane.showMessageDialog(null, "You learn that " + c + " is really nice!!");
-					boolean cowFriend = true;
+					if (answer == 3) {
+						JOptionPane.showMessageDialog(null, "You became " + c + "'s friend!!");
+						if (animal.equalsIgnoreCase("Tiny Cow")) {
+							cowFriend = true;
+						}
+						if (animal.equalsIgnoreCase("Fat Bunny")) {
+							bunnyFriend = true;
+						}
+					}
+
 				}
 
 			}
-
-		}
 //ESCAPE!!
-		if (answer == 2) {
-			JOptionPane.showMessageDialog(null, "You tried to escape!!");
-			if (random2 == 1) {
-				JOptionPane.showMessageDialog(null, "You escaped successfully!!");
-			} else {
-				JOptionPane.showMessageDialog(null, "You failed to escape!!");
-				JOptionPane.showMessageDialog(null, c + " poked you with his " + p + "!!");
-				JOptionPane.showMessageDialog(null, c + " dealt 1 damage!!");
-				playerHealth--;
-				JOptionPane.showMessageDialog(null, "You now have " + playerHealth + " health left!!");
-				int answer4 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
-						JOptionPane.INFORMATION_MESSAGE, null,
-						new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
-				if (answer4 == 0) {
-					JOptionPane.showMessageDialog(null, "You smacked " + c + "!!");
-					if (random2 == 1) {
-						JOptionPane.showMessageDialog(null, "You dealt 2 damage!!");
-						cowHealth -= 2;
-						JOptionPane.showMessageDialog(null, c + " fainted!!");
-					} else {
-						JOptionPane.showMessageDialog(null, "You dealt 1 damage!");
-						cowHealth--;
-						JOptionPane.showMessageDialog(null, c + " has " + cowHealth + " health left!!");
-						JOptionPane.showMessageDialog(null, c + " poked you with his " + p + "!!");
-						JOptionPane.showMessageDialog(null, c + " dealt 1 damage!");
-						playerHealth--;
-						JOptionPane.showMessageDialog(null, "You have " + playerHealth + " health left!!");
-						int answer5 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
-								JOptionPane.INFORMATION_MESSAGE, null,
-								new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
-						if (answer5 == 0) {
-							JOptionPane.showMessageDialog(null, "You smacked " + c + "!!");
-							JOptionPane.showMessageDialog(null, "You dealt 1 damage!!");
+			if (answer == 2) {
+				JOptionPane.showMessageDialog(null, "You tried to escape!!");
+				if (random2 == 1) {
+					JOptionPane.showMessageDialog(null, "You escaped successfully!!");
+				} else {
+					JOptionPane.showMessageDialog(null, "You failed to escape!!");
+					JOptionPane.showMessageDialog(null, c + " poked you with his " + p + "!!");
+					JOptionPane.showMessageDialog(null, c + " dealt 1 damage!!");
+					playerHealth--;
+					JOptionPane.showMessageDialog(null, "You now have " + playerHealth + " health left!!");
+					int answer4 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
+							JOptionPane.INFORMATION_MESSAGE, null,
+							new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
+					if (answer4 == 0) {
+						JOptionPane.showMessageDialog(null, "You smacked " + c + "!!");
+						if (random2 == 1) {
+							JOptionPane.showMessageDialog(null, "You dealt 2 damage!!");
+							cowHealth -= 2;
+							JOptionPane.showMessageDialog(null, c + " fainted!!");
+						} else {
+							JOptionPane.showMessageDialog(null, "You dealt 1 damage!");
 							cowHealth--;
-							JOptionPane.showMessageDialog(null, c + " fainted!!");
-						}
-						if (answer5 == 1) {
-							JOptionPane.showMessageDialog(null, "You scared " + c + "!!");
-							JOptionPane.showMessageDialog(null, c + " is really scared!!");
-							JOptionPane.showMessageDialog(null, c + " fainted!!");
-						}
-						if (answer5 == 2) {
-							JOptionPane.showMessageDialog(null, "You tried to escape!!");
-							if (random2 == 1) {
-								JOptionPane.showMessageDialog(null, "You escaped succesfully!!");
-							} else {
-								JOptionPane.showMessageDialog(null, "You failed to escape!");
-								JOptionPane.showMessageDialog(null, c + " poked you with his " + p + "!!");
-								JOptionPane.showMessageDialog(null, c + " dealt 1 damage!!");
-								playerHealth--;
-								JOptionPane.showMessageDialog(null, "You have " + playerHealth + " health left!!");
-								int answer6 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter",
-										0, JOptionPane.INFORMATION_MESSAGE, null,
-										new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
-								if (answer6 == 0) {
-									JOptionPane.showMessageDialog(null, "You smacked " + c + "!!");
-									JOptionPane.showMessageDialog(null, c + " fainted!!");
-									if (answer6 == 1) {
-										JOptionPane.showMessageDialog(null, "You scared " + c + "!!");
+							JOptionPane.showMessageDialog(null, c + " has " + cowHealth + " health left!!");
+							JOptionPane.showMessageDialog(null, c + " poked you with his " + p + "!!");
+							JOptionPane.showMessageDialog(null, c + " dealt 1 damage!");
+							playerHealth--;
+							JOptionPane.showMessageDialog(null, "You have " + playerHealth + " health left!!");
+							int answer5 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
+									JOptionPane.INFORMATION_MESSAGE, null,
+									new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
+							if (answer5 == 0) {
+								JOptionPane.showMessageDialog(null, "You smacked " + c + "!!");
+								JOptionPane.showMessageDialog(null, "You dealt 1 damage!!");
+								cowHealth--;
+								JOptionPane.showMessageDialog(null, c + " fainted!!");
+							}
+							if (answer5 == 1) {
+								JOptionPane.showMessageDialog(null, "You scared " + c + "!!");
+								JOptionPane.showMessageDialog(null, c + " is really scared!!");
+								JOptionPane.showMessageDialog(null, c + " fainted!!");
+							}
+							if (answer5 == 2) {
+								JOptionPane.showMessageDialog(null, "You tried to escape!!");
+								if (random2 == 1) {
+									JOptionPane.showMessageDialog(null, "You escaped succesfully!!");
+								} else {
+									JOptionPane.showMessageDialog(null, "You failed to escape!");
+									JOptionPane.showMessageDialog(null, c + " poked you with his " + p + "!!");
+									JOptionPane.showMessageDialog(null, c + " dealt 1 damage!!");
+									playerHealth--;
+									JOptionPane.showMessageDialog(null, "You have " + playerHealth + " health left!!");
+									int answer6 = JOptionPane.showOptionDialog(null, "What do you want to do?",
+											"Encounter", 0, JOptionPane.INFORMATION_MESSAGE, null,
+											new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
+									if (answer6 == 0) {
+										JOptionPane.showMessageDialog(null, "You smacked " + c + "!!");
 										JOptionPane.showMessageDialog(null, c + " fainted!!");
-									}
-									if (answer6 == 2) {
-										JOptionPane.showMessageDialog(null, "You escaped successfully!!");
-									}
-									if (answer6 == 3) {
-										JOptionPane.showMessageDialog(null, c + " doesn't want to be your friend!!");
-										JOptionPane.showMessageDialog(null, c + " runs away!!");
+										if (answer6 == 1) {
+											JOptionPane.showMessageDialog(null, "You scared " + c + "!!");
+											JOptionPane.showMessageDialog(null, c + " fainted!!");
+										}
+										if (answer6 == 2) {
+											JOptionPane.showMessageDialog(null, "You escaped successfully!!");
+										}
+										if (answer6 == 3) {
+											JOptionPane.showMessageDialog(null,
+													c + " doesn't want to be your friend!!");
+											JOptionPane.showMessageDialog(null, c + " runs away!!");
+										}
 									}
 								}
-							}
-							if (answer5 == 3) {
-								JOptionPane.showMessageDialog(null, c + " is your friend!!");
-								boolean cowFriend = true;
+								if (answer5 == 3) {
+									JOptionPane.showMessageDialog(null, c + " is your friend!!");
+									if (answer == 3) {
+										JOptionPane.showMessageDialog(null, "You became " + c + "'s friend!!");
+										if (animal.equalsIgnoreCase("Tiny Cow")) {
+											cowFriend = true;
+										}
+										if (animal.equalsIgnoreCase("Fat Bunny")) {
+											bunnyFriend = true;
+										}
+									}
+
+								}
 
 							}
 
 						}
 
 					}
-
 				}
-
+//be friends!!
+				if (answer == 3) {
+					JOptionPane.showMessageDialog(null, "You became " + c + "'s friend!!");
+					if (animal.equalsIgnoreCase("Tiny Cow")) {
+						cowFriend = true;
+					}
+					if (animal.equalsIgnoreCase("Fat Bunny")) {
+						bunnyFriend = true;
+					}
+				}
 			}
 		}
-//be friends!!
-		if (answer == 3) {
-			JOptionPane.showMessageDialog(null, "You became " + c + "'s friend!!");
-			boolean cowFriend = true;
-		}
+
 	}
 
+	public static void leftBackwards() {
+		if (torch == true) {
+			JOptionPane.showMessageDialog(null, "You go down the left path until you see a drop.");
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"You walk blindly along the path until you suddenly drop down another " + "hole...");
+
+		}
+
+	}
 }
