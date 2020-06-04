@@ -13,6 +13,13 @@ import javax.swing.JButton;
 public class TheSilentMontage implements ActionListener {
 	static String animal = "Tiny Cow";
 	static String power = "Tiny Horns";
+	static String chestLoot;
+	
+	
+	
+	
+	
+	static boolean chestStuff;
 	static boolean cowFriend;
 	static boolean bunnyFriend;
 	static boolean torch;
@@ -120,30 +127,30 @@ public class TheSilentMontage implements ActionListener {
 					}
 				}
 			}
-			
-			if (buttonPressed == button4) {
-				JOptionPane.showMessageDialog(null, "You decided to go left");
+
+			int lrr = JOptionPane.showOptionDialog(null, "Left or Right or Random?", "Intersection", 0,
+					JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Left", "Right", "Don't know" }, null);
+			if (lrr == 0) {
+				JOptionPane.showMessageDialog(null, "You went left");
 				leftBackwards();
 			}
-			if (buttonPressed == button5) {
-				JOptionPane.showMessageDialog(null, "You decided to go right");
-
+			if (lrr == 1) {
+				JOptionPane.showMessageDialog(null, "You went right");
+				rightBackwards();
 			}
-			if (buttonPressed == button3) {
-				JOptionPane.showMessageDialog(null,
-						"You didn't know which " + "one to pick, so you spun around in a circle and went "
-								+ "whichever way you turned out to be facing in.");
+			if (lrr == 2) {
+				JOptionPane.showMessageDialog(null, "You didn't know which way to go so you spun"
+						+ " around in a circle and went the way you faced");
 				if (randomb1 == 1) {
-					JOptionPane.showMessageDialog(null, "You faced left.");
+					JOptionPane.showMessageDialog(null, "You faced left");
 					leftBackwards();
-				} else {
-					JOptionPane.showMessageDialog(null, "You faced right.");
-
+				}
+				if (randomb1 == 0) {
+					JOptionPane.showMessageDialog(null, "You faced right");
+					rightBackwards();
 				}
 			}
-		}
-		if(buttonPressed == button4) {
-			System.out.println("Hello Nolan!");
+
 		}
 	}
 
@@ -361,4 +368,31 @@ public class TheSilentMontage implements ActionListener {
 		}
 
 	}
+
+	public static void rightBackwards() {
+		if (torch == true) {
+			 chestLoot = JOptionPane.showInputDialog(null,
+					"You walk down the path with your torch. Then, you see a chest. Open it? yes/no");
+		} else {
+			 chestLoot = JOptionPane.showInputDialog(null,
+					"You walk blindly down the path until you hit a chest, you can feel it. Open it? yes/no");
+		}
+	if(chestLoot.equalsIgnoreCase("yes")) {
+	JOptionPane.showMessageDialog(null, "You open the chest, and you take the things inside. A lantern, "
+			+ "a peice of armor, a Nerf gun and a backpack.");
+	chestStuff = true;
+	}else {
+	JOptionPane.showMessageDialog(null,  "");
+	
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	}
+
 }
