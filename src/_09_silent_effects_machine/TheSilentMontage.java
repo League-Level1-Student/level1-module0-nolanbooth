@@ -14,11 +14,8 @@ public class TheSilentMontage implements ActionListener {
 	static String animal = "Tiny Cow";
 	static String power = "Tiny Horns";
 	static String chestLoot;
-	
-	
-	
-	
-	
+static int playerHealth;
+	static boolean doorFight;
 	static boolean chestStuff;
 	static boolean cowFriend;
 	static boolean bunnyFriend;
@@ -158,7 +155,7 @@ public class TheSilentMontage implements ActionListener {
 //setup
 		int random2 = new Random().nextInt(2);
 		int cowHealth = 2;
-		int playerHealth = 10;
+		playerHealth = 10;
 		// code
 		int answer = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
 				JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
@@ -371,28 +368,65 @@ public class TheSilentMontage implements ActionListener {
 
 	public static void rightBackwards() {
 		if (torch == true) {
-			 chestLoot = JOptionPane.showInputDialog(null,
+			chestLoot = JOptionPane.showInputDialog(null,
 					"You walk down the path with your torch. Then, you see a chest. Open it? yes/no");
 		} else {
-			 chestLoot = JOptionPane.showInputDialog(null,
+			chestLoot = JOptionPane.showInputDialog(null,
 					"You walk blindly down the path until you hit a chest, you can feel it. Open it? yes/no");
 		}
-	if(chestLoot.equalsIgnoreCase("yes")) {
-	JOptionPane.showMessageDialog(null, "You open the chest, and you take the things inside. A lantern, "
-			+ "a peice of armor, a Nerf gun and a backpack.");
-	chestStuff = true;
-	}else {
-	JOptionPane.showMessageDialog(null,  "");
-	
-	
-	
-	}
-	
-	
-	
-	
-	
-	
-	}
+		if (chestLoot.equalsIgnoreCase("yes")) {
+			JOptionPane.showMessageDialog(null, "You open the chest, and you take the things inside. A lantern, "
+					+ "a peice of armor, a Nerf gun and a backpack.");
+			chestStuff = true;
+		JOptionPane.showMessageDialog(null, "A sign on the chest says 'USE THIS TO DESTROY THE NOIGROR'");
+		JOptionPane.showMessageDialog(null,  "???");
+		String doorPath = JOptionPane.showInputDialog(null, "Do you want to go through the door on your right or go back? yes/no");
+		if(doorPath.equalsIgnoreCase("yes")) {
+		JOptionPane.showMessageDialog(null,  "You go through the door with the Nerf gun in your hand... "
+				+ "hmmm... I guess it would help a bit??");
+		
+		}
+		} else {
+			JOptionPane.showMessageDialog(null, "You decide to leave the chest there.");
+			String doorPath = JOptionPane.showInputDialog(null, "Do you want to go through the door on your right or go back? yes/no");
+			if(doorPath.equalsIgnoreCase("yes")) {
+			JOptionPane.showMessageDialog(null,  "You go through the door with your fist held up... "
+					+ "hmmm... I guess it would help a bit??");
+			
+			}
+		}
 
+	}
+public static void bullyEncounter() {
+	JOptionPane.showMessageDialog(null,  "You go through the door and a fist punches out at you, dealing 2 damage!");
+	playerHealth-=2;
+	if(playerHealth == 0) {
+	JOptionPane.showMessageDialog(null,  "You fainted!! Game over!!");
+	}else {
+	
+		if(chestStuff == true) {
+		
+		int bullyDefence =	JOptionPane.showOptionDialog(null, "What do you want to do?",
+				"Encounter", 0, JOptionPane.INFORMATION_MESSAGE, null,
+				new String[] { "Fire Nerf Gun", "Punch", "Escape" }, null);
+		}else {
+		int bullyDefence2 =	JOptionPane.showOptionDialog(null, "What do you want to do?",
+				"Encounter", 0, JOptionPane.INFORMATION_MESSAGE, null,
+				new String[] { "Punch", "Escape" }, null);
+	
+	
+	
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+	}	
 }
