@@ -15,7 +15,8 @@ public class TheSilentMontage implements ActionListener {
 	static String power = "Tiny Horns";
 	static String chestLoot;
 static int playerHealth;
-	static boolean doorFight;
+static int bullyHealth;
+static boolean doorFight;
 	static boolean chestStuff;
 	static boolean cowFriend;
 	static boolean bunnyFriend;
@@ -400,7 +401,7 @@ static int playerHealth;
 public static void bullyEncounter() {
 	JOptionPane.showMessageDialog(null,  "You go through the door and a fist punches out at you, dealing 2 damage!");
 	playerHealth-=2;
-	if(playerHealth == 0) {
+	if(playerHealth == 0|| playerHealth < 0) {
 	JOptionPane.showMessageDialog(null,  "You fainted!! Game over!!");
 	}else {
 	
@@ -409,13 +410,25 @@ public static void bullyEncounter() {
 		int bullyDefence =	JOptionPane.showOptionDialog(null, "What do you want to do?",
 				"Encounter", 0, JOptionPane.INFORMATION_MESSAGE, null,
 				new String[] { "Fire Nerf Gun", "Punch", "Escape" }, null);
-		}else {
+		if(bullyDefence == 0) {
+			JOptionPane.showMessageDialog(null,  "You fired the nerf gun at bully!!");
+		JOptionPane.showMessageDialog(null,  "You dealt 5 damage!!");
+		}
+		
+		
+		
+		
+		
+		}
+		else {
 		int bullyDefence2 =	JOptionPane.showOptionDialog(null, "What do you want to do?",
 				"Encounter", 0, JOptionPane.INFORMATION_MESSAGE, null,
 				new String[] { "Punch", "Escape" }, null);
-	
-	
-	
+		
+		
+		
+		
+		
 		}
 	
 	}
