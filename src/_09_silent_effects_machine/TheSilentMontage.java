@@ -74,6 +74,22 @@ static boolean doorFight;
 			} else {
 				JOptionPane.showMessageDialog(null, "You got to a wall. There are three butttons");
 			}
+			int wall = JOptionPane.showOptionDialog(null, "Which Button?", "By the Wall", 0,
+					JOptionPane.INFORMATION_MESSAGE, null, new String[] { "button1", "button2", "button3" }, null);
+		if(wall == 0) {
+		JOptionPane.showMessageDialog(null,  "You pressed button 1.");
+		}if(wall == 1) {
+		JOptionPane.showMessageDialog(null,  "You pressed button 2");	
+		}if(wall == 2) {
+		JOptionPane.showMessageDialog(null,  "You pressed button 3");
+		}
+		
+		
+		
+		
+		
+		
+		
 		}
 		if (buttonPressed == button2) {
 			JOptionPane.showMessageDialog(null, "You selected backwards");
