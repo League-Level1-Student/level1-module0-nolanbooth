@@ -14,7 +14,7 @@ public class TheSilentMontage implements ActionListener {
 	static String animal = "Tiny Cow";
 	static String power = "Tiny Horns";
 	static String chestLoot;
-	static int playerHealth;
+	static int playerHealth = 10;
 	static int bullyHealth;
 	static boolean doorFight;
 	static boolean chestStuff;
@@ -78,11 +78,47 @@ public class TheSilentMontage implements ActionListener {
 					JOptionPane.INFORMATION_MESSAGE, null, new String[] { "button1", "button2", "button3" }, null);
 			if (wall == 0) {
 				JOptionPane.showMessageDialog(null, "You pressed button 1.");
-
+				JOptionPane.showMessageDialog(null,  "After that, a tile in the stone wall disappears, and "
+						+ "a ladder pops out...");
+				String ladder = JOptionPane.showInputDialog(null,  "Do you want to use the ladder to get out of the place?? yes/no");
+				if(ladder.equalsIgnoreCase("yes")) {
+					JOptionPane.showMessageDialog(null, "You go back to the hole, and put the ladder up, "
+							+ "and you are free!!!");
+				System.exit(0);
+				}else {
+					JOptionPane.showMessageDialog(null,  "You decide to leave the ladder there.");
+					int wall2 = JOptionPane.showOptionDialog(null, "Which Button?", "By the Wall", 0,
+							JOptionPane.INFORMATION_MESSAGE, null, new String[] {"button2", "button3" }, null);
+				if(wall2 == 0) {
+					JOptionPane.showMessageDialog(null, "A hole opens up in the ground, and you fall down...");
+				System.exit(0);
+				}if(wall2 == 1) {
+				String ladder2 = JOptionPane.showInputDialog(null,  "You press the button, and then a hole in the ceiling "
+							+ "opens up. A ladder gets lowered down then.  Climb up? yes/no");
+					if(ladder2.equalsIgnoreCase("yes")) {
+						JOptionPane.showMessageDialog(null,  "You climb up the ladder.");
+					}else {
+						String hole =  JOptionPane.showInputDialog(null,  "You decide to leave it there. Press button 2? yes/no");
+					if(hole.equalsIgnoreCase("yes")) {
+						JOptionPane.showMessageDialog(null,  "");
+					}
+					
+					}
+					
+					
+				}
+					
+					
+					
+					
+					
+				
+				}
 			}
 			if (wall == 1) {
 				JOptionPane.showMessageDialog(null, "You pressed button 2");
-				JOptionPane.showMessageDialog(null, "You press the button, and then you fall down a hole...");
+				JOptionPane.showMessageDialog(null, "You press the button, and then you fall down a hole that"
+						+ " opened up beneath you...");
 				System.exit(0);
 
 			}
@@ -95,7 +131,7 @@ public class TheSilentMontage implements ActionListener {
 		if (buttonPressed == button2) {
 			JOptionPane.showMessageDialog(null, "You selected backwards");
 
-			int randoma1 = new Random().nextInt(3);
+			int randoma1 = new Random().nextInt(2);
 			if (randoma1 == 1) {
 				JOptionPane.showMessageDialog(null, "You encountered a Fat Bunny!");
 				animal = "Fat Bunny";
@@ -173,7 +209,7 @@ public class TheSilentMontage implements ActionListener {
 //setup
 		int random2 = new Random().nextInt(2);
 		int cowHealth = 2;
-		playerHealth = 10;
+	
 		// code
 		int answer = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
 				JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Fight", "Scare", "Escape", "Be Friends" }, null);
@@ -437,6 +473,37 @@ public class TheSilentMontage implements ActionListener {
 					JOptionPane.showMessageDialog(null, "You fired the nerf gun at bully!!");
 					JOptionPane.showMessageDialog(null, "You dealt 5 damage!!");
 					bullyHealth -= 5;
+				if(bullyHealth == 0||bullyHealth < 0) {
+					JOptionPane.showMessageDialog(null,  "Bully fainted!!");
+				}else {
+					JOptionPane.showMessageDialog(null,  "Bully has "+bullyHealth+" health left!!");
+					JOptionPane.showMessageDialog(null,  "Bully punched you!!");
+					JOptionPane.showMessageDialog(null,  "Bully dealt 2 damage!!");
+					playerHealth-=2;
+					if(playerHealth == 0|| playerHealth < 0) {
+					JOptionPane.showMessageDialog(null, "You fainted, game over!!");
+					}else {
+					JOptionPane.showMessageDialog(null,  "You have "+playerHealth+" health left!!");	
+					int bullyDefence6 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
+							JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Fire Nerf Gun", "Punch", "Escape" },
+							null);
+					if(bullyDefence6 == 0) {
+					JOptionPane.showMessageDialog(null,  "You fired the nerf gun at bully!!");
+						JOptionPane.showMessageDialog(null,  "You dealt 5 damage!!");
+						bullyHealth-=5;
+						if(bullyHealth == 0||bullyHealth < 0) {
+							JOptionPane.showMessageDialog(null, "Bully fainted!!");						}
+					}else{
+					JOptionPane.showMessageDialog(null,  "Bully has "+" health left!!");
+						
+					}
+					
+					
+					}
+				
+					
+				}
+				
 				}
 				if (bullyDefence == 1) {
 					JOptionPane.showMessageDialog(null, "You punched bully!!");
@@ -467,7 +534,12 @@ public class TheSilentMontage implements ActionListener {
 								JOptionPane.showMessageDialog(null, "Bully punched you!!");
 								JOptionPane.showMessageDialog(null, "Bully dealt 2 damage!!");
 								playerHealth -= 2;
-
+								
+								
+								
+								
+								
+								
 							}
 						}
 
@@ -497,8 +569,14 @@ public class TheSilentMontage implements ActionListener {
 						JOptionPane.showMessageDialog(null, "You fainted!!! Game over!!");
 						System.exit(0);
 
-					}else {
-						JOptionPane.showMessageDialog(null,  "You have "+playerHealth+" health left");
+					} else {
+						JOptionPane.showMessageDialog(null, "You have " + playerHealth + " health left");
+						int bullyDefence5 = JOptionPane.showOptionDialog(null, "What do you want to do?", "Encounter", 0,
+								JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Punch", "Escape" }, null);
+						if(bullyDefence5 == 0) {
+						JOptionPane.showMessageDialog(null,  "You punched bully!!");
+						
+						}
 						
 						
 						
