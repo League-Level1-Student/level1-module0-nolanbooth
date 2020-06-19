@@ -559,7 +559,15 @@ public class TheSilentMontage implements ActionListener {
 								JOptionPane.showMessageDialog(null, "Bully punched you!!");
 								JOptionPane.showMessageDialog(null, "Bully dealt 2 damage!!");
 								playerHealth -= 2;
+								if (playerHealth == 0 || playerHealth < 0) {
+									JOptionPane.showMessageDialog(null, "You fainted!! Game over!!");
+									System.exit(0);
+								} else {
+									int bullyDefence8 = JOptionPane.showOptionDialog(null, "What do you want to do?",
+											"Encounter", 0, JOptionPane.INFORMATION_MESSAGE, null,
+											new String[] { "Fire Nerf Gun", "Punch", "Escape" }, null);
 
+								}
 							}
 						}
 
