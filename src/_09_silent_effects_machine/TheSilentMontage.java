@@ -493,7 +493,22 @@ public class TheSilentMontage implements ActionListener {
 								bullyHealth -= 5;
 								if (bullyHealth == 0 || bullyHealth < 0) {
 									JOptionPane.showMessageDialog(null, "Bully fainted!!");
-								}
+								} 
+							if(bullyDefence6 == 1) {
+								JOptionPane.showMessageDialog(null,  "");
+								
+								
+							}
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								
 							}
 							if (bullyDefence == 1) {
 								JOptionPane.showMessageDialog(null, "You punched bully!!");
