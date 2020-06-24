@@ -32,6 +32,7 @@ public class Video_Thing implements ActionListener {
 		panel.add(button3);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+	frame.pack();
 	}
 
 	@Override
